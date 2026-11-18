@@ -1,0 +1,25 @@
+# niv
+
+> A deliberately tiny signals UI runtime for the DOM: reactive bindings, keyed lists, static-template cloning and a compilerless JSX runtime. No virtual DOM, no diffing, no re-render.
+
+niv is a pre-alpha, single-package library published as `@amritk/niv` (formerly `@amritk/mini`). Its `AI.md` is a mental model, a minimal runnable example, and the gotchas most likely to trip up an LLM; `llms-full.txt` inlines it.
+
+## Docs
+
+- [AI.md](https://github.com/amritk/niv/blob/main/AI.md): A deliberately tiny signals-based UI layer: reactive DOM bindings plus a compilerless JSX runtime.
+- [README](https://github.com/amritk/niv/blob/main/README.md): the human-facing guide to every entry point
+
+## Entry points
+
+- `@amritk/niv`
+- `@amritk/niv/router`
+- `@amritk/niv/flow`
+- `@amritk/niv/forms`
+- `@amritk/niv/query`
+- `@amritk/niv/hot`
+- `@amritk/niv/vite`
+
+## Optional
+
+- [Full AI docs bundle](https://github.com/amritk/niv/blob/main/llms-full.txt): AI.md in one file
+- [Repository](https://github.com/amritk/niv): source, issues, and the playground
