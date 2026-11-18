@@ -10,8 +10,8 @@ export default defineConfig({
       // so the package's own specifiers must resolve to source — the suite runs
       // against this checkout with no prior `bun run build`. The subpath pattern
       // comes first so the bare one cannot swallow it.
-      { find: /^@amritk\/mini\/(.+)$/, replacement: `${resolve(root, 'src')}/$1` },
-      { find: /^@amritk\/mini$/, replacement: resolve(root, 'src/index.ts') },
+      { find: /^@amritk\/niv\/(.+)$/, replacement: `${resolve(root, 'src')}/$1` },
+      { find: /^@amritk\/niv$/, replacement: resolve(root, 'src/index.ts') },
       // `@amritk/runtime-validators` is deliberately absent: it is an optional
       // peer published from the mjst repo, so it resolves from node_modules as
       // a consumer's would.

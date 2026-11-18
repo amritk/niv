@@ -17,8 +17,8 @@ export default defineConfig({
     // packs and installs a real tarball for that. The subpath pattern comes
     // first so the bare one cannot swallow it.
     alias: [
-      { find: /^@amritk\/mini\/(.+)$/, replacement: `${src}/$1` },
-      { find: /^@amritk\/mini$/, replacement: `${src}/index.ts` },
+      { find: /^@amritk\/niv\/(.+)$/, replacement: `${src}/$1` },
+      { find: /^@amritk\/niv$/, replacement: `${src}/index.ts` },
     ],
   },
   plugins: [
