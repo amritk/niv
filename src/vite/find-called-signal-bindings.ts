@@ -32,7 +32,7 @@ import ts from 'typescript'
  * This is the shared core behind both adapters — the Vite plugin
  * ({@link catchCalledSignals}) that reports live in the dev server, and the
  * repo's CLI gate. When a read is deliberately static, mark the line (or the
- * line above) with a `// mini-static-ok` comment and it is skipped.
+ * line above) with a `// niv-static-ok` comment and it is skipped.
  */
 
 /** A single suspicious `{signal()}` binding, with a 1-based source position. */
@@ -54,7 +54,7 @@ export type CalledSignalBinding = {
 }
 
 /** The opt-out marker, checked on the finding's own line or the line above. */
-const IGNORE = 'mini-static-ok'
+const IGNORE = 'niv-static-ok'
 
 /** Whether a type annotation is `Signal<…>` or `ReadonlySignal<…>`. */
 const isSignalType = (type: ts.TypeNode | undefined): boolean =>
@@ -75,7 +75,7 @@ const isSignalFactory = (init: ts.Expression | undefined): boolean =>
  * `signal(...)` / `computed(...)`, and identifiers annotated `Signal<…>` /
  * `ReadonlySignal<…>` (variables, parameters, properties). This is a file-wide
  * heuristic rather than scope-accurate resolution — which is why the
- * `mini-static-ok` escape hatch exists for the rare name collision.
+ * `niv-static-ok` escape hatch exists for the rare name collision.
  */
 const collectSignalNames = (sourceFile: ts.SourceFile): Set<string> => {
   const names = new Set<string>()

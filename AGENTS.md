@@ -27,11 +27,7 @@ the reason.
 
 This repository **is** `@amritk/niv` — the repo root is the published package.
 niv is a deliberately tiny signals UI layer: reactive DOM bindings plus a
-compilerless JSX runtime, built on `alien-signals`. It used to be published as
-`@amritk/mini`; the migration is "replace `@amritk/mini` with `@amritk/niv` in
-your imports and nothing else", which is why the public type names keep their
-`Mini` prefix (`MiniChild`, `MiniChildren`, `MiniElementProps`) and the
-lint opt-out is still `// mini-static-ok`. Do not rename those.
+compilerless JSX runtime, built on `alien-signals`.
 
 Around the package sit two things that are not published:
 
@@ -83,7 +79,7 @@ bun run playground:dev      # the playground's Vite dev server (also :build, :pr
   calling a signal in JSX (`disabled={streaming()}`) — the `@amritk/niv/vite`
   plugin guards it live in the dev server, and `check:reactivity` runs the same
   check in CI. If you add a `.tsx` test that intentionally freezes a signal, mark
-  the line `// mini-static-ok`.
+  the line `// niv-static-ok`.
 - **`bindHtml` is the only `innerHTML` sink**, and its `sanitize` argument is
   required at every call site — never add a default. Everything else writes
   through `textContent` / attributes / `classList`.

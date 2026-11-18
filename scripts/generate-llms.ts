@@ -40,7 +40,7 @@ const buildIndex = (): string => {
   )
   lines.push('')
   lines.push(
-    `niv is a pre-alpha, single-package library published as \`${manifest.name}\` (formerly \`@amritk/mini\`). Its \`AI.md\` is a mental model, a minimal runnable example, and the gotchas most likely to trip up an LLM; \`llms-full.txt\` inlines it.`,
+    `niv is a pre-alpha, single-package library published as \`${manifest.name}\`. Its \`AI.md\` is a mental model, a minimal runnable example, and the gotchas most likely to trip up an LLM; \`llms-full.txt\` inlines it.`,
   )
   lines.push('')
   lines.push('## Docs')

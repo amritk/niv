@@ -2,7 +2,7 @@ import { createHost } from '../internal/create-host'
 import { renderChild } from '../internal/render-child'
 import { toFactory } from '../internal/to-factory'
 import { toGetter } from '../internal/to-getter'
-import { type ClassValue, jsx, type MaybeReactive, type MiniElementProps, type StyleValue } from '../jsx-runtime'
+import { type ClassValue, jsx, type MaybeReactive, type NivElementProps, type StyleValue } from '../jsx-runtime'
 import { list } from '../list'
 import { defaultKey } from './default-key'
 
@@ -74,7 +74,7 @@ const buildHost = <T,>(props: ForProps<T>): HTMLElement => {
   if (props.class !== undefined) hostProps['class'] = props.class
   if (props.style !== undefined) hostProps['style'] = props.style
   if (props.ref !== undefined) hostProps['ref'] = props.ref
-  return jsx(props.as, hostProps as MiniElementProps)
+  return jsx(props.as, hostProps as NivElementProps)
 }
 
 /**

@@ -5,9 +5,7 @@
 This repository is **`@amritk/niv`** — a deliberately tiny signals UI layer:
 reactive DOM bindings plus a compilerless JSX runtime, built on
 `alien-signals`. The repo root is the published package; there are no
-workspaces. (It was published as `@amritk/mini`; `@amritk/niv` continues from the same version with the same API, which
-is why the type names keep their `Mini` prefix and the lint opt-out is still
-`// mini-static-ok`.)
+workspaces.
 
 The package targets browsers; the development toolchain (install, build, test)
 uses Bun.
@@ -90,8 +88,9 @@ and `onCleanup`. Its only runtime dependency is `alien-signals`, and it imports
 
 The compilerless JSX runtime: the standard `react-jsx` transform pointed at the
 package (`jsxImportSource: "@amritk/niv"`), with reactivity decided by value
-shape at runtime. Public JSX types (`MiniChild`, `MiniChildren`,
-`MiniElementProps`) keep their old names on purpose.
+shape at runtime. Its public types are `NivChild`, `NivChildren` and
+`NivElementProps`, alongside `Component`, `MaybeReactive`, `ClassValue`,
+`StyleValue` and `TargetedEvent`.
 
 ### The feature subpaths
 

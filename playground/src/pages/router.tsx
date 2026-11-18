@@ -80,8 +80,8 @@ const Params = (props: RouterPageProps): HTMLElement => {
           <Link to="/router/amritk/niv" navigate={router.navigate} class="pill">
             amritk/niv
           </Link>
-          <Link to="/router/amritk/mini" navigate={router.navigate} class="pill">
-            amritk/mini
+          <Link to="/router/amritk/runtime-validators" navigate={router.navigate} class="pill">
+            amritk/runtime-validators
           </Link>
           <Link to="/router" navigate={router.navigate} class="pill">
             clear

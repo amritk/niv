@@ -52,7 +52,7 @@ You write tests that are clear, maintainable, and thorough. You optimize for rea
   scans the `.tsx` under `src/`, `examples/` and `playground/` for
   `attr={signal()}`, which freezes a value where `attr={signal}` would stay
   reactive. A test that freezes a signal on purpose marks the line
-  `// mini-static-ok` (see `AGENTS.md`).
+  `// niv-static-ok` (see `AGENTS.md`).
 
 ## Style & Best Practices
 

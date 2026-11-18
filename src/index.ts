@@ -11,7 +11,7 @@
  */
 
 export { bindAttr, bindChecked, bindClass, bindHtml, bindSelect, bindShow, bindText, bindValue } from './bind'
-export type { Component, MaybeReactive, MiniChild, MiniChildren, TargetedEvent } from './jsx-runtime'
+export type { Component, MaybeReactive, NivChild, NivChildren, TargetedEvent } from './jsx-runtime'
 export { list } from './list'
 export { mount } from './mount'
 export { onCleanup } from './on-cleanup'

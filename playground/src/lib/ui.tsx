@@ -1,4 +1,4 @@
-import type { MiniChildren } from '@amritk/niv'
+import type { NivChildren } from '@amritk/niv'
 
 /**
  * The playground's own chrome — the handful of presentational components every
@@ -12,7 +12,7 @@ export type SectionProps = {
   title: string
   /** One or two sentences on what the demo below is actually showing. */
   blurb?: string
-  children?: MiniChildren
+  children?: NivChildren
 }
 
 /** A titled card. Every demo on every page is wrapped in one. */
@@ -30,14 +30,14 @@ export type PageProps = {
   title: string
   /** The page's opening paragraph. */
   lede: string
-  children?: MiniChildren
+  children?: NivChildren
 }
 
 /**
  * A page shell: title, lede, then the sections.
  *
  * The children get their own wrapper rather than sitting next to the heading,
- * because `MiniChildren` may itself be an array and JSX's child list is not
+ * because `NivChildren` may itself be an array and JSX's child list is not
  * nested — the runtime flattens, but the type deliberately does not, so a
  * forwarded `children` has to be the sole child of whatever holds it.
  */

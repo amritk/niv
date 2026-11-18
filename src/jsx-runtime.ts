@@ -66,9 +66,9 @@ export type MaybeReactive<T> = T | (() => T)
 type StaticChild = Node | string | number | boolean | null | undefined
 
 /** Anything that may appear between an element's tags. A function is a reactive text binding. */
-export type MiniChild = StaticChild | (() => string | number | boolean | null | undefined)
+export type NivChild = StaticChild | (() => string | number | boolean | null | undefined)
 
-export type MiniChildren = MiniChild | readonly MiniChild[]
+export type NivChildren = NivChild | readonly NivChild[]
 
 /**
  * One entry in a `class` list. Entries nest, so a shared fragment — itself an
@@ -137,12 +137,12 @@ type EventHandlers<E extends Element> = {
 }
 
 /**
- * The mini-specific props every element accepts, parameterised by the element
+ * The niv-specific props every element accepts, parameterised by the element
  * type so `ref` lands on the concrete node (`<button ref>` gives an
  * `HTMLButtonElement`).
  */
 type SpecialProps<E extends Element> = {
-  children?: MiniChildren
+  children?: NivChildren
   /**
    * Called with the created element after its children are appended — the
    * JSX replacement for `template()`'s `data-ref` dictionary, and the escape
@@ -314,7 +314,7 @@ export type Component<P> = (props: P) => HTMLElement
  * so an index of `unknown` both accepts every rich prop shape and forces the
  * runtime to narrow each value before using it.
  */
-export type MiniElementProps = { readonly [prop: string]: unknown }
+export type NivElementProps = { readonly [prop: string]: unknown }
 
 // ---------------------------------------------------------------------------
 // Runtime
@@ -525,10 +525,10 @@ const applyStyle = (element: Element, value: unknown): void => {
  * makes `{cond && <span>…</span>}` work for build-time conditionals. A
  * function child becomes a reactive text node bound to the values it reads.
  */
-const appendChildren = (element: Element, children: MiniChildren): void => {
+const appendChildren = (element: Element, children: NivChildren): void => {
   if (children === null || children === undefined || typeof children === 'boolean') return
   if (Array.isArray(children)) {
-    for (const child of children) appendChildren(element, child as MiniChildren)
+    for (const child of children) appendChildren(element, child as NivChildren)
     return
   }
   if (typeof children === 'function') {
@@ -560,7 +560,7 @@ const appendChildren = (element: Element, children: MiniChildren): void => {
  * `<div class="x">{y}</div>` into `jsx('div', { class: 'x', children: y })`;
  * a capitalised tag arrives as its component function instead of a string.
  */
-export const jsx = (tag: string | Component<never>, props: MiniElementProps, key?: unknown): HTMLElement => {
+export const jsx = (tag: string | Component<never>, props: NivElementProps, key?: unknown): HTMLElement => {
   // Components run exactly once — there is no instance, no lifecycle, no
   // re-render. Whatever reactivity the component sets up internally (its
   // bindings) is the only thing that ever updates afterwards.
@@ -575,7 +575,7 @@ export const jsx = (tag: string | Component<never>, props: MiniElementProps, key
   // updating rather than as an error. There is no competing meaning to protect,
   // because niv does no keying at the JSX level at all — that lives in `list`.
   if (typeof tag === 'function') {
-    return (tag as (props: MiniElementProps) => HTMLElement)(key === undefined ? props : { ...props, key })
+    return (tag as (props: NivElementProps) => HTMLElement)(key === undefined ? props : { ...props, key })
   }
 
   const element = createElement(tag)
@@ -594,7 +594,7 @@ export const jsx = (tag: string | Component<never>, props: MiniElementProps, key
   for (const name in props) {
     const value = props[name]
     if (name === 'children') {
-      appendChildren(element, value as MiniChildren)
+      appendChildren(element, value as NivChildren)
     } else if (name === 'key') {
       // Reserved by JSX syntax; keying belongs to `list`, so ignore it.
     } else if (name === 'ref') {
@@ -665,7 +665,7 @@ export const jsxs = jsx
  */
 export const jsxDEV: (
   tag: string | Component<never>,
-  props: MiniElementProps,
+  props: NivElementProps,
   key?: unknown,
   isStatic?: boolean,
   source?: unknown,
@@ -694,6 +694,6 @@ export namespace JSX {
     [Tag in SvgOnlyTag]: SvgProps<Tag>
   }
   export type ElementChildrenAttribute = {
-    children: MiniChildren
+    children: NivChildren
   }
 }

@@ -47,7 +47,7 @@ npx vite
 Then open the printed URL. `index.html` loads Bootstrap 3 (the benchmark's
 stylesheet) and mounts `bootstrap.ts`. To drop it into the real benchmark
 harness, copy `main.ts` + `bootstrap.ts` into a
-`frameworks/keyed/mini` entry and point its `index.html` at the bundle.
+`frameworks/keyed/niv` entry and point its `index.html` at the bundle.
 
 ## Files
 

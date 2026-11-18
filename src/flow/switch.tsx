@@ -1,13 +1,13 @@
 import { createHost } from '../internal/create-host'
 import { renderChild } from '../internal/render-child'
 import { toFactory } from '../internal/to-factory'
-import type { MiniChildren } from '../jsx-runtime'
+import type { NivChildren } from '../jsx-runtime'
 import { MATCH, type MatchData, type MatchElement } from './match-marker'
 
 /** Props for {@link Switch}. `children` are the `<Match>` branches. */
 export type SwitchProps = {
   /** The `<Match>` branches, in priority order. */
-  children: MiniChildren
+  children: NivChildren
   /** Shown when no branch matches. Nothing renders when omitted. */
   fallback?: Node | (() => Node)
 }
@@ -17,7 +17,7 @@ export type SwitchProps = {
  * flattening arrays and skipping anything that is not a tagged `<Match>` (stray
  * whitespace, comments). Order is preserved because it decides branch priority.
  */
-const collectMatches = (children: MiniChildren): MatchData[] => {
+const collectMatches = (children: NivChildren): MatchData[] => {
   const matches: MatchData[] = []
   const visit = (child: unknown): void => {
     if (Array.isArray(child)) {

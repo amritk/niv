@@ -58,7 +58,7 @@ describe('accept-hot-updates', () => {
     const plugin = acceptHotUpdates()
 
     expect(runTransform(plugin, ENTRY, '/repo/node_modules/some-dep/dist/main.js')).toBeNull()
-    expect(runTransform(plugin, ENTRY, '\0virtual:mini-entry')).toBeNull()
+    expect(runTransform(plugin, ENTRY, '\0virtual:niv-entry')).toBeNull()
     expect(runTransform(plugin, ENTRY, '/app/styles.css')).toBeNull()
   })
 

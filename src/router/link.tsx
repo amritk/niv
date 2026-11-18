@@ -1,5 +1,5 @@
 import { toGetter } from '../internal/to-getter'
-import { jsx, type MaybeReactive, type MiniChildren, type MiniElementProps, type StyleValue } from '../jsx-runtime'
+import { jsx, type MaybeReactive, type NivChildren, type NivElementProps, type StyleValue } from '../jsx-runtime'
 import type { NavigateOptions } from './create-router'
 
 /** Props for {@link Link}. */
@@ -35,7 +35,7 @@ export type LinkProps = {
   id?: MaybeReactive<string>
   /** Inline style, the same forms JSX's `style` accepts. */
   style?: MaybeReactive<StyleValue>
-  children?: MiniChildren
+  children?: NivChildren
 }
 
 /**
@@ -95,5 +95,5 @@ export const Link = (props: LinkProps): HTMLElement => {
     if (props[key] !== undefined) anchorProps[key] = props[key]
   }
 
-  return jsx('a', anchorProps as MiniElementProps)
+  return jsx('a', anchorProps as NivElementProps)
 }

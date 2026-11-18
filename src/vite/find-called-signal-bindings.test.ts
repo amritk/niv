@@ -158,13 +158,13 @@ describe('find-called-signal-bindings', () => {
   })
 
   it('skips a binding suppressed on the same line', () => {
-    const source = 'const s = signal(false)\nconst a = <button disabled={s()}>x</button> // mini-static-ok'
+    const source = 'const s = signal(false)\nconst a = <button disabled={s()}>x</button> // niv-static-ok'
     expect(findCalledSignalBindings(source)).toEqual([])
   })
 
   it('skips a binding suppressed on the line above', () => {
     const source =
-      'const s = signal(false)\n// mini-static-ok: intentional frozen value\nconst a = <button disabled={s()}>x</button>'
+      'const s = signal(false)\n// niv-static-ok: intentional frozen value\nconst a = <button disabled={s()}>x</button>'
     expect(findCalledSignalBindings(source)).toEqual([])
   })
 

@@ -6,5 +6,5 @@
 
 // The JSX namespace holds only types, so it must be re-exported type-only —
 // at runtime there is no `JSX` binding to forward.
-export type { Component, JSX, MiniChild, MiniChildren, MiniElementProps } from './jsx-runtime'
+export type { Component, JSX, NivChild, NivChildren, NivElementProps } from './jsx-runtime'
 export { jsxDEV } from './jsx-runtime'

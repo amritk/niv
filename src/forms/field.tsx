@@ -1,4 +1,4 @@
-import { type ClassValue, jsx, type MaybeReactive, type MiniChildren, type MiniElementProps } from '../jsx-runtime'
+import { type ClassValue, jsx, type MaybeReactive, type NivChildren, type NivElementProps } from '../jsx-runtime'
 import type { FieldValues, Form } from './create-form'
 
 /** Which control `<Field>` renders. Defaults to `input`. */
@@ -19,7 +19,7 @@ export type FieldProps<V extends FieldValues> = {
   /** Placeholder for the control. */
   placeholder?: string
   /** `<select>` options (or any extra control children) — `<option>`s go here. */
-  children?: MiniChildren
+  children?: NivChildren
   /** Class for the wrapper element. */
   class?: MaybeReactive<ClassValue>
   /** Class for the `<label>`. */
@@ -75,9 +75,9 @@ export const Field = <V extends FieldValues>(props: FieldProps<V>): HTMLElement 
   if (props.inputClass !== undefined) controlProps['class'] = props.inputClass
   if (props.children !== undefined) controlProps['children'] = props.children
 
-  const children: MiniChildren = [
+  const children: NivChildren = [
     props.label === undefined ? null : jsx('label', labelProps(name, props.labelClass, props.label)),
-    jsx(tag, controlProps as MiniElementProps),
+    jsx(tag, controlProps as NivElementProps),
     // A reactive text node that empties when there is no error to show. `error`
     // is already withheld until the field is touched or the form submitted, so
     // this stays quiet on a pristine form and appears the moment a message does.
@@ -87,19 +87,19 @@ export const Field = <V extends FieldValues>(props: FieldProps<V>): HTMLElement 
       // spacing — does not paint on a valid field.
       show: () => field.error() !== undefined,
       children: () => field.error() ?? '',
-    } as MiniElementProps),
+    } as NivElementProps),
   ]
 
   return jsx(props.wrapper ?? 'div', {
     ...(props.class === undefined ? {} : { class: props.class }),
     children,
-  } as MiniElementProps)
+  } as NivElementProps)
 }
 
 /** Builds the `<label for>` props, forwarding `class` only when supplied. */
-const labelProps = (name: string, labelClass: MaybeReactive<ClassValue> | undefined, text: string): MiniElementProps =>
+const labelProps = (name: string, labelClass: MaybeReactive<ClassValue> | undefined, text: string): NivElementProps =>
   ({
     for: name,
     ...(labelClass === undefined ? {} : { class: labelClass }),
     children: text,
-  }) as MiniElementProps
+  }) as NivElementProps

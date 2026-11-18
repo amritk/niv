@@ -36,7 +36,7 @@ describe('check-publishable', () => {
   }
 
   beforeAll(async () => {
-    root = await mkdtemp(join(tmpdir(), 'mini-check-publishable-'))
+    root = await mkdtemp(join(tmpdir(), 'niv-check-publishable-'))
   })
 
   afterAll(async () => {

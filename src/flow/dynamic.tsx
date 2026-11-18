@@ -1,6 +1,6 @@
 import { createHost } from '../internal/create-host'
 import { renderChild } from '../internal/render-child'
-import { type Component, jsx, type MiniElementProps } from '../jsx-runtime'
+import { type Component, jsx, type NivElementProps } from '../jsx-runtime'
 
 /** A thing `<Dynamic>` can render: an intrinsic tag name or a component function. */
 export type DynamicComponent = string | Component<never>
@@ -58,7 +58,7 @@ export const Dynamic = (props: DynamicProps): HTMLElement => {
     }
     if (lastFactory && resolved === lastResolved) return lastFactory
     lastResolved = resolved
-    lastFactory = () => jsx(resolved, rest as MiniElementProps)
+    lastFactory = () => jsx(resolved, rest as NivElementProps)
     return lastFactory
   })
   return host
